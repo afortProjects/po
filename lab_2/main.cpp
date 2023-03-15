@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Book.h"
+#include "Library.h"
 using namespace std;
 
 class Vector3d {
@@ -68,6 +69,44 @@ std::ostream& operator<<(std::ostream& ostr, const Vector& v) {
     return ostr;
 };
 
+void task_1() {
+    string a="autor", t="tytul";
+    Book e;
+    cout << "e: "<< e << endl;
+    Book b1 = {a, t};
+    cout << "b1: "<< b1 << endl;
+    Book b2 = {"<?>","<?>"};
+    cout << "b2: "<< b2 << endl;
+    Book b3 = b1;
+    cout << "b3: "<< b3 << " b1: " << b1 << endl;
+    e = move(b2);
+    cout << "e: "<< e << " b2:" << b2 << endl;
+    e.SetAuthor("autorek");
+    cout << "e: "<< e << endl;
+    e.SetTitle("tytulek");
+    cout << "e: "<< e << endl;
+}
+
+void task_2() {
+    Library e;
+    cout << "e: "<< e << endl;
+    //3-5 książek
+    Library l1 = {{"<?>", "<?>"},
+    {"<?>", "<?>"},
+    {"<?>", "<?>"}};
+    cout << "l1: "<< l1 << endl;
+    Library l2(2);
+    cout << "l2: "<< l2 << endl;
+    l2[0] = {"<?>", "<?>"};
+    l2[1] = {"<?>", "<?>"};
+    cout << "l2: "<< l2 << endl;
+    e = std::move(l2);
+    cout << "e: " << e << " l2: "<< l2 << endl;
+    l1[0] = std::move(e[1]);
+    cout << "l1: " << l1 << " e: "<< e << endl;
+
+}
+
 int main() {
     // Vector3d wektor{1,2,3};
     // Vector3d wektor2{2,3,4};
@@ -82,20 +121,8 @@ int main() {
     // cout << wektor;
     // cout<< w2;
     // return 0;
-    string a="autor", t="tytul";
-    Book e;
-    cout << "e: "<< e << endl;
-    Book b1 = {a, t};
-    cout << "b1: "<< b1 << endl;
-    Book b2 = {"<?>","<?>"};
-    cout << "b2: "<< b2 << endl;
-    Book b3 = b1;
-    cout << "b3: "<< b3 << " b1: " << b1 << endl;
-    e = std::move(b2);
-    cout << "e: "<< e << " b2:" << b2 << endl;
-    e.SetAuthor("autorek");
-    cout << "e: "<< e << endl;
-    e.SetTitle("tytulek");
-    cout << "e: "<< e << endl;
+    
+    task_2();
+    
     return 0;
 }

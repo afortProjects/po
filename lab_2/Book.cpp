@@ -4,11 +4,11 @@
 using namespace std;
 
 Book::Book() : author(""), title("") {
-    cout << "Utworzono nowy pusty obiekt klasy Book."<<endl;
+    // cout << "Utworzono nowy pusty obiekt klasy Book."<<endl;
 }
 
-Book::Book(Book& other) : author(other.author), title(other.title) {
-    cout << "Utworzono nowy obiekt klasy Book, na podstawie jej obiektu, korzystajac z funkcji kompilatora. "<<endl;
+Book::Book(const Book& other) : author(other.author), title(other.title) {
+    // cout << "Utworzono nowy obiekt klasy Book, na podstawie jej obiektu, korzystajac z funkcji kompilatora. "<<endl;
 }
 
 Book::Book(Book&& other) {
@@ -16,20 +16,21 @@ Book::Book(Book&& other) {
     title = other.title;
     other.author = nullptr;
     other.title = nullptr;
-    cout << "Utworzono nowy obiekt klasy Book, na podstawie jej obiektu, korzystajac z funkcji move. "<<endl;
+    // cout << "Utworzono nowy obiekt klasy Book, na podstawie jej obiektu, korzystajac z funkcji move. "<<endl;
 }
 
-Book::Book(string& author, string& title) : author(author), title(title) {
-    cout<<"Utworzony nowy obiekt z gotowym autorem i tytulem, LReference"<<endl;
+Book::Book(string const &author, string const &title) : author(author), title(title) {
+    // cout<<"Utworzony nowy obiekt z gotowym autorem i tytulem, LReference"<<endl;
 }
 
 Book::Book(string&& author, string&& title) : author(move(author)), title(move(title)) {
-    cout<<"Utworzony nowy obiekt z gotowym autorem i tytulem, rReference"<<endl;
+    // cout<<"Utworzony nowy obiekt z gotowym autorem i tytulem, rReference"<<endl;
 }
 
 std::ostream& operator<<(std::ostream& os, Book& other) {
 	cout<<"Author: " << other.author<<endl;
 	cout<<"Title: " << other.title<<endl;
+    return os;
 };
 
 void Book::SetAuthor(string &newAuthor) {
@@ -67,5 +68,5 @@ Book& Book::operator=(Book&& other) {
 }
 
 Book::~Book() {
-    cout<<"Destruktor został wywołany"<<endl;
+    // cout<<"Destruktor został wywołany"<<endl;
 }

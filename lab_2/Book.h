@@ -6,9 +6,9 @@ class Book {
         string author, title;
     public:
         Book();
-        Book(string& author, string& title);
+        Book(string const &author, string const &title);
         Book(string&& author, string&& title);
-        Book(Book& other);
+        Book(const Book& other);
         Book(Book&& other);
 
         friend ostream& operator <<(ostream& os, Book& book);
