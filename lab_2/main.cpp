@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Book.h"
 #include "Library.h"
+#include "Car.h"
+#include "CarRental.h"
 using namespace std;
 
 class Vector3d {
@@ -94,16 +96,37 @@ void task_2() {
     Library l1 = {{"<?>", "<?>"},
     {"<?>", "<?>"},
     {"<?>", "<?>"}};
-    cout << "l1: "<< l1 << endl;
-    Library l2(2);
-    cout << "l2: "<< l2 << endl;
-    l2[0] = {"<?>", "<?>"};
-    l2[1] = {"<?>", "<?>"};
-    cout << "l2: "<< l2 << endl;
-    e = std::move(l2);
-    cout << "e: " << e << " l2: "<< l2 << endl;
-    l1[0] = std::move(e[1]);
-    cout << "l1: " << l1 << " e: "<< e << endl;
+    // cout << "l1: "<< l1 << endl;
+    Library l2(4);
+    l2 = Library(move(l1));
+    // cout<<"l222"<<l2<<endl;
+    // cout<<l1<<endl;
+    cout<<l2<<endl;
+    // l2[0] = {"<?>", "<?>"};
+    // l2[1] = {"<?>", "<?>"};
+    // l2[2] = {"autor", "tytul"};
+    // Book b{"autorek", "tytulek"};
+    // l2[3] = b;
+    // cout << "l2: "<< l2 << endl;
+    // e = std::move(l2);
+    // cout << "e: " << e << " l2: "<< l2 << endl;
+    // l1[0] = std::move(e[2]);
+    // cout << "l1: " << l1 << " e: "<< e << endl;
+
+}
+
+void task_3() {
+    availabilityState status = available;
+    Car car1 = {"w", 2, status};
+    Car car2 = {"www", 2, status};
+    car2 = car1;
+    CarRental wypozyczalnia = {{"wytwornia", 1031, status}, car2};
+    CarRental wyp2 = wypozyczalnia;
+    cout<<car2<<endl;
+    cout<<car1<<endl;
+    cout<<wypozyczalnia[1]<<endl;
+    cout<<wypozyczalnia[0]<<endl;
+    cout<<wyp2[1]<<endl;
 
 }
 
@@ -120,9 +143,8 @@ int main() {
     // // wektor3 = wektor;
     // cout << wektor;
     // cout<< w2;
-    // return 0;
     
-    task_2();
+    task_3();
     
     return 0;
 }

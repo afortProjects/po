@@ -11,11 +11,12 @@ Book::Book(const Book& other) : author(other.author), title(other.title) {
     // cout << "Utworzono nowy obiekt klasy Book, na podstawie jej obiektu, korzystajac z funkcji kompilatora. "<<endl;
 }
 
-Book::Book(Book&& other) {
-    author = other.author;
-    title = other.title;
-    other.author = nullptr;
-    other.title = nullptr;
+Book::Book(Book&& other)  : author(move(author)), title(move(title)) {
+    //Rownowaznosc
+    // author = other.author;
+    // title = other.title;
+    other.author = "";
+    other.title = "";
     // cout << "Utworzono nowy obiekt klasy Book, na podstawie jej obiektu, korzystajac z funkcji move. "<<endl;
 }
 
@@ -47,11 +48,11 @@ void Book::SetTitle(string &&newTitle) {
     title = move(newTitle);
 }
 
-string Book::GetAuthor() {
+string Book::GetAuthor() const {
     return this->author;
 }
 
-string Book::GetTitle() {
+string Book::GetTitle() const {
     return this->title;
 }
 Book& Book::operator=(Book& right) {

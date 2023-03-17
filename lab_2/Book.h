@@ -22,8 +22,8 @@ class Book {
         Book& operator=(Book& right);
         Book& operator=(Book&& other);
         
-        string GetAuthor();
-        string GetTitle();
+        string GetAuthor() const;
+        string GetTitle() const;
   
         ~Book();
 };

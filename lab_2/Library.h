@@ -5,12 +5,12 @@ using namespace std;
 
 class Library {
     private:
-        Book* list;
+        Book* arr;
         size_t size;
     public:
         friend ostream& operator<<(ostream& os, Library& library);
         Library();
-        Library(initializer_list<Book> initList);
+        Library(initializer_list<Book> initArr);
         Library(size_t size);
         Library(Library &orig);
         Library(Library &&orig);
