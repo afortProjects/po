@@ -57,8 +57,8 @@ string Book::GetTitle() const {
 }
 Book& Book::operator=(Book& right) {
     Book copy = Book(right);
-    swap(this->title, copy.title);
-    swap(this->author, copy.author);
+    swap(title, copy.title);
+    swap(author, copy.author);
     return *this;
 }
 

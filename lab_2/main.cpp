@@ -117,15 +117,16 @@ void task_2() {
 
 void task_3() {
     availabilityState status = available;
-    Car car1 = {"w", 2, status};
-    Car car2 = {"www", 2, status};
+    Car car1{"w", 2, status};
+    Car car2{"www", 2, status};
     car2 = car1;
-    CarRental wypozyczalnia = {{"wytwornia", 1031, status}, car2};
-    CarRental wyp2 = wypozyczalnia;
+    CarRental wypozyczalnia{{"wytwornia", 1031, status}, car2};
+    CarRental wyp2 = CarRental(wypozyczalnia);
     cout<<car2<<endl;
     cout<<car1<<endl;
-    cout<<wypozyczalnia[1]<<endl;
     cout<<wypozyczalnia[0]<<endl;
+    cout<<wypozyczalnia[1]<<endl;
+    cout<<wyp2[0]<<endl;
     cout<<wyp2[1]<<endl;
 
 }

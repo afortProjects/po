@@ -32,10 +32,11 @@ Car::Car(Car&& car) : made(move(car.made)), vin(move(car.vin)), state(move(car.s
 
 Car& Car::operator=(Car &car) {
     Car copy = Car(car);
-    copy.vin += 100;
-    swap(this->made, copy.made);
-    swap(this->vin, copy.vin);
-    swap(this->state, copy.state);
+    swap(made, copy.made);
+    swap(vin, copy.vin);
+    swap(state, copy.state);
+    vin += 100;
+    cout<<"vin "<<vin<<endl;
     return *this;
 
 }

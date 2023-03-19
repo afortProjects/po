@@ -17,16 +17,25 @@ CarRental::CarRental(initializer_list<Car> initList) : size{initList.size()}, ar
     std::cout<<"Stworzono tablice"<<endl;
     size_t i = 0;
     for(Car item : initList) {
-        arr[i] = item;
+        cout<<"i"<<item<<endl;
+        arr[i] = move(item);
+        arr[i].SetVin(arr[i].GetVin()-100);
         i++;
     }
 }
 
-CarRental::CarRental(CarRental &orig) : arr(orig.arr), size(orig.size) {
+CarRental::CarRental(CarRental &orig) : size{orig.size}, arr{new Car[orig.size]} {
+    for(std::size_t i=0; i < size; i++) {
+        arr[i] = orig.arr[i];
+    }
+
     cout<<"Stworzono tablice przez l-reference, z obiektem podanym"<<endl;
 }
 
-CarRental::CarRental(CarRental &&orig) : size(move(orig.size)), arr(move(orig.arr)) {
+CarRental::CarRental(CarRental &&orig) {
+    arr = orig.arr;
+    size = orig.size;
+
     orig.arr = nullptr;
     orig.size = 0;
     cout<<"Stworzono tablice przez r-reference"<<endl;
@@ -34,12 +43,8 @@ CarRental::CarRental(CarRental &&orig) : size(move(orig.size)), arr(move(orig.ar
 
 CarRental& CarRental::operator=(CarRental& right) {
     CarRental copy = CarRental(right);
-    for(size_t i =0; i<copy.size; i++) {
-        copy.arr[i].SetVin(copy.arr[i].GetVin()+100);
-    }
-    swap(arr, right.arr);
-    swap(size, right.size);
-
+    swap(arr, copy.arr);
+    swap(size, copy.size); 
     return *this;
 }
 CarRental& CarRental::operator=(CarRental&& right) {
