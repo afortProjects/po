@@ -135,23 +135,21 @@ public class lab_3 {
 
         public static void task_4_1() {
                 
-                    Punkt p1 = new Punkt(2, 2);
-                    // Transformacja tr2 = new Obrot(30);
-                    // Transformacja tr3 = new Obrot(90);
+                    Punkt p1 = new Punkt(2, 3);
+                    Transformacja tr2 = new Obrot(30);
+                    Transformacja tr3 = new Obrot(90);
                     Transformacja tr4 = new Skalowanie(3, 5);
                     Transformacja tr5 = new Skalowanie(5, 2);
                     Transformacja tr6 = new Translacja(3, 5);
                     Transformacja tr7 = new Obrot(30);
-                    ZlozenieTransformacji t = new ZlozenieTransformacji(4);
-                    t.tab[0] = tr4; //6, 10
-                    t.tab[1] = tr5; //30 20
-                    t.tab[2] = tr6; //33 25 
-                    t.tab[3] = tr7; //33 25 
+                    Transformacja[] arr = {tr2, tr3, tr4, tr5, tr6, tr7};
+                    ZlozenieTransformacji t = new ZlozenieTransformacji(arr);
                     p1 = t.transformuj(p1);
                     ZlozenieTransformacji t2 = t.getTransformacjaOdwrotna();
                     Punkt p2 = t2.transformuj(p1);
                     System.out.println(p2);
                     System.out.println(p1);
+
                     // Punkt p2 = tr2.transformuj(p1);
                     // System.out.println(p2);
                     // Transformacja trr2 = tr2.getTransformacjaOdwrotna();
