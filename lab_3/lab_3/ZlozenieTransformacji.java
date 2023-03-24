@@ -30,7 +30,11 @@ public class ZlozenieTransformacji implements Transformacja{
     @Override
     public Punkt transformuj(Punkt p) {
         for(int i =0; i< length; i++) {
-            p = tab[i].transformuj(p);
+            try {
+                p = tab[i].transformuj(p);
+            } catch(BrakUkladuExc e) {
+                e.printStackTrace();
+            }
         }
         return p;
     }

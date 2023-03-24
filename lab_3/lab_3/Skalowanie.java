@@ -15,8 +15,15 @@ public class Skalowanie implements Transformacja {
     }
 
     @Override
-    public Punkt transformuj(Punkt p) {
-        return new Punkt(skalaX * p.GetX(), skalaY * p.GetY());
+    public Punkt transformuj(Punkt p) throws BrakUkladuExc {
+        Uklad uklad = Uklad.getInstance();
+        if(uklad.srodekUkladu == null)
+            throw new BrakUkladuExc("Brak ukladu");
+        p = uklad.t1.transformuj(p);
+        p = new Punkt(skalaX * p.GetX(), skalaY * p.GetY());
+        p = uklad.t2.transformuj(p);
+        return p;
+        
     }
     public double getSkalaX() {
         return skalaX;
